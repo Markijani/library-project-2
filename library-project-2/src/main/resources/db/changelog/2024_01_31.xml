@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="insert data in users, role " author="author kvitko">
+        <sql>
+            INSERT INTO role (name) VALUES ('admin');
+            INSERT INTO role (name) VALUES ('user');
+
+            INSERT INTO users (username, password, role_id) VALUES ('admin', 'admin123', 1);
+            INSERT INTO users (username, password, role_id) VALUES ('user1', 'user123', 2);
+            INSERT INTO users (username, password, role_id) VALUES ('user2', 'user1234', 2);
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>
