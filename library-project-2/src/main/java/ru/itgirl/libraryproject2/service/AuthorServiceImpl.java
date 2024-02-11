@@ -43,7 +43,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public AuthorDto getByNameV1(String name) {
         log.info("Try to find author by name {}", name);
-        Optional<Author> author = Optional.ofNullable(authorRepository.findAuthorByName(name));
+        Optional<Author> author = (authorRepository.findAuthorByName(name));
         if (author.isPresent()) {
             AuthorDto authorDto = convertEntityToDto(author.get());
             log.info("Author: {}", authorDto.toString());
@@ -129,7 +129,6 @@ public class AuthorServiceImpl implements AuthorService {
         List<AuthorDto> authorDto = authors.stream().map(this::convertEntityToDto).collect(Collectors.toList());
         log.info("Authors converted to dto: {}", authorDto.size());
         return authorDto;
-
     }
 
     private Author convertDtoToEntity(AuthorCreateDto authorCreateDto) {
